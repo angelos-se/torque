@@ -6,6 +6,9 @@
 # description: TORQUE/PBS is a versatile batch system for SMPs and clusters
 #
 ulimit -n 32768
+# Disable ulimit for locked memory on system loaded with Mellanox driver
+grep -q ^mlx4 /proc/modules && ulimit -l unlimited
+
 # Source the library functions
 . /etc/rc.d/init.d/functions
 
